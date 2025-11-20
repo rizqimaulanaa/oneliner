@@ -1,5 +1,5 @@
 # One-liner Pentesting
-Penggunaan 1 baris command untuk melakukan uji penetrasi dan bug bounty.
+One-liner pentesting is a technique of performing security tests using single-line terminal commands. It allows quick enumeration, scanning, and recon without needing long scripts.
 ## 1. Passive Subdomain Enumeration
 Scrapes subdomains from Certificate Transparency logs using crt.sh
 ```bash
