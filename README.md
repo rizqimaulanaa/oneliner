@@ -1,4 +1,5 @@
-# Oneliner Pentesting
+# One-liner Pentesting
+Penggunaan 1 baris command untuk melakukan uji penetrasi dan bug bounty.
 ## 1. Passive Subdomain Enumeration
 Scrapes subdomains from Certificate Transparency logs using crt.sh
 ```bash
