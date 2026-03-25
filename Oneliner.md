@@ -155,7 +155,6 @@ cat live.txt | xargs -I{} ffuf -u {}/FUZZ -w /usr/share/wordlists/dirb/common.tx
 ```bash
 gau target.com | grep "=" | sort -u
 ```
-
 Atau:
 
 ```bash
@@ -168,6 +167,11 @@ waybackurls target.com | grep "=" | sort -u
 
 ```bash
 gau target.com | grep "\.js$" | sort -u
+```
+atau:
+
+```bash
+katana -list live.txt -silent | grep ".js" | tee js.txt
 ```
 
 ---
@@ -226,15 +230,7 @@ cat live.txt | httpx -waf-detect
 
 ---
 
-## 30. Screenshot Subdomain
-
-```bash
-gowitness file -f live.txt --threads 50
-```
-
----
-
-## 31. Subdomain Takeover
+## 30. Subdomain Takeover
 
 ```bash
 subzy run --targets subs.txt
@@ -242,7 +238,7 @@ subzy run --targets subs.txt
 
 ---
 
-## 32. Full Recon Pipeline (One Shot)
+## 31. Full Recon Pipeline (One Shot)
 
 ```bash
 subfinder -d target.com -silent | httpx -silent | tee live.txt && nuclei -l live.txt -as -o vulns.txt
