@@ -90,7 +90,7 @@ Quickly scans for open ports across a wide range.
 naabu -host target.com -p 1-10000
 ```
 
-## 🔎 16. Passive Subdomain Enumeration
+## 16. Passive Subdomain Enumeration
 
 Mengambil subdomain dari Certificate Transparency (crt.sh):
 
@@ -100,7 +100,7 @@ curl -s "https://crt.sh/?q=%25.target.com&output=json" | jq -r '.[].name_value' 
 
 ---
 
-## 🌐 17. Subdomain Discovery + Live Host
+## 17. Subdomain Discovery + Live Host
 
 Cari subdomain lalu filter yang aktif:
 
@@ -110,7 +110,7 @@ subfinder -d target.com -silent | httpx -silent
 
 ---
 
-## 📡 18. Multi Source Subdomain + Deduplicate
+## 18. Multi Source Subdomain + Deduplicate
 
 Gabung beberapa tools:
 
@@ -120,7 +120,7 @@ Gabung beberapa tools:
 
 ---
 
-## 🚪 19. Check Live + Info (Title, Status, Tech)
+## 19. Check Live + Info (Title, Status, Tech)
 
 ```bash
 cat subs.txt | httpx -title -status-code -tech-detect -silent
@@ -128,7 +128,7 @@ cat subs.txt | httpx -title -status-code -tech-detect -silent
 
 ---
 
-## ⚡ 20. Fast Port Scanning
+## 20. Fast Port Scanning
 
 ```bash
 cat live.txt | naabu -top-ports 1000 -rate 10000
@@ -136,7 +136,7 @@ cat live.txt | naabu -top-ports 1000 -rate 10000
 
 ---
 
-## 📁 21. Directory Fuzzing
+## 21. Directory Fuzzing
 
 ```bash
 ffuf -u https://target.com/FUZZ -w /usr/share/wordlists/dirb/common.txt -mc 200,301,302 -t 100
@@ -150,7 +150,7 @@ cat live.txt | xargs -I{} ffuf -u {}/FUZZ -w /usr/share/wordlists/dirb/common.tx
 
 ---
 
-## 🧠 22. Parameter Discovery
+## 22. Parameter Discovery
 
 ```bash
 gau target.com | grep "=" | sort -u
@@ -164,7 +164,7 @@ waybackurls target.com | grep "=" | sort -u
 
 ---
 
-## 📜 23. JavaScript File Hunting
+## 23. JavaScript File Hunting
 
 ```bash
 gau target.com | grep "\.js$" | sort -u
@@ -172,7 +172,7 @@ gau target.com | grep "\.js$" | sort -u
 
 ---
 
-## 💉 24. XSS Testing (Quick)
+## 24. XSS Testing (Quick)
 
 ```bash
 cat params.txt | dalfox pipe --skip-bav --only-poc
@@ -180,7 +180,7 @@ cat params.txt | dalfox pipe --skip-bav --only-poc
 
 ---
 
-## 🧨 25. SQL Injection Testing
+## 25. SQL Injection Testing
 
 ```bash
 cat params.txt | xargs -I{} sqlmap -u "{}" --batch --random-agent
@@ -188,7 +188,7 @@ cat params.txt | xargs -I{} sqlmap -u "{}" --batch --random-agent
 
 ---
 
-## 🔐 26. Sensitive File Exposure
+## 26. Sensitive File Exposure
 
 ```bash
 cat live.txt | nuclei -t exposures/
@@ -202,7 +202,7 @@ cat live.txt | xargs -I{} curl -s {}/.env
 
 ---
 
-## ⚙️ 27. Nuclei Auto Scan (🔥 Best)
+## 27. Nuclei Auto Scan (Best)
 
 ```bash
 nuclei -l live.txt -as -o result.txt
@@ -210,7 +210,7 @@ nuclei -l live.txt -as -o result.txt
 
 ---
 
-## 🧪 28. CORS Misconfiguration
+## 28. CORS Misconfiguration
 
 ```bash
 cat live.txt | nuclei -t misconfiguration/cors/
@@ -218,7 +218,7 @@ cat live.txt | nuclei -t misconfiguration/cors/
 
 ---
 
-## 🧱 29. WAF Detection
+## 29. WAF Detection
 
 ```bash
 cat live.txt | httpx -waf-detect
@@ -226,7 +226,7 @@ cat live.txt | httpx -waf-detect
 
 ---
 
-## 📸 30. Screenshot Subdomain
+## 30. Screenshot Subdomain
 
 ```bash
 gowitness file -f live.txt --threads 50
@@ -234,7 +234,7 @@ gowitness file -f live.txt --threads 50
 
 ---
 
-## 🧨 31. Subdomain Takeover
+## 31. Subdomain Takeover
 
 ```bash
 subzy run --targets subs.txt
@@ -242,7 +242,7 @@ subzy run --targets subs.txt
 
 ---
 
-## 🔥 32. Full Recon Pipeline (One Shot)
+## 32. Full Recon Pipeline (One Shot)
 
 ```bash
 subfinder -d target.com -silent | httpx -silent | tee live.txt && nuclei -l live.txt -as -o vulns.txt
@@ -250,16 +250,7 @@ subfinder -d target.com -silent | httpx -silent | tee live.txt && nuclei -l live
 
 ---
 
-# 🧠 Tips
-
-* Gunakan VPS biar tidak kena rate limit
-* Gunakan proxy (Burp Suite):
-
-```bash
--proxy http://127.0.0.1:8080
-```
-
-* Kombinasi terbaik:
+* Tools
 
   * `subfinder + httpx + nuclei + gau + dalfox`
 
